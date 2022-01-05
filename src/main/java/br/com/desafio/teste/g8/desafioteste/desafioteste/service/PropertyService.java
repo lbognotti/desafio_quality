@@ -4,7 +4,9 @@ import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Property;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Room;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class PropertyService {
@@ -14,12 +16,21 @@ public class PropertyService {
      * @param property
      * @return Retorna um Hashmap de comodos com suas áreas.
      */
-    public HashMap<String, Double> getRoomArea(Property property) {
-        HashMap<String, Double> roomArea = new HashMap<String, Double>();
+    public Map<String, Double> getRoomArea(Property property) {
+        Map<String, Double> roomArea = new HashMap<>();
         for (Room room: property.getQuartoList()){
-            double area = room.getWidth() * room.getLength();
-            roomArea.put(room.getName(), area);
+            roomArea.put(room.getName(), room.area());
         }
         return roomArea;
+    }
+
+    /**
+     * @author Ronaldd Pinho
+     * @description Retorna o maior quarto de uma propriedade.
+     * @param property Objeto da propiedade com a lista de quartos.
+     * @return Objeto de Room.
+     */
+    public Room getBiggestRoom(Property property) {
+        return property.getQuartoList().stream().max(Comparator.comparing(Room::area)).get();
     }
 }

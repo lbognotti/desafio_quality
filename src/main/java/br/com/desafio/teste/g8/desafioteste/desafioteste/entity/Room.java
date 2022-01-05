@@ -9,4 +9,8 @@ public class Room {
     private String name;
     private Double width;
     private Double length;
+
+    public double area() {
+        return this.width * this.length;
+    }
 }
