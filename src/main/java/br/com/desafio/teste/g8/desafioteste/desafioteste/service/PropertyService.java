@@ -6,7 +6,9 @@ import br.com.desafio.teste.g8.desafioteste.desafioteste.repository.PropertyRepo
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class PropertyService {
@@ -28,6 +30,16 @@ public class PropertyService {
         return roomArea;
     }
 
+    /**
+     * @author Ronaldd Pinho
+     * @description Retorna o maior quarto de uma propriedade.
+     * @param property Objeto da propiedade com a lista de quartos.
+     * @return Objeto de Room.
+     */
+    public Room getBiggestRoom(Property property) {
+        return property.getQuartoList().stream().max(Comparator.comparing(Room::area)).get();
+    }
+  
     /**
      * @author Vinicius Feitoza
      * @description Método para calcular a área total do imóvel com base na soma dos comodos.
