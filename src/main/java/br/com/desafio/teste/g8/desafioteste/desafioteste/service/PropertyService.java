@@ -33,4 +33,16 @@ public class PropertyService {
     public Room getBiggestRoom(Property property) {
         return property.getQuartoList().stream().max(Comparator.comparing(Room::area)).get();
     }
+  
+    /**
+     * @author Vinicius Feitoza
+     * @description Método para calcular a área total do imóvel com base na soma dos comodos.
+     * @param property
+     * @return Retorna um double da área do imovel.
+     */
+    public double getPropertyArea(Property property) {
+        HashMap<String, Double> roomArea = this.getRoomArea(property);
+        double propertyArea = roomArea.values().stream().reduce((a, b) -> a + b).get();
+        return propertyArea ;
+    }
 }
