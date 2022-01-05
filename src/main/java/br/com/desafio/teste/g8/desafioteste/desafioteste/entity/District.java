@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Data
 @Builder
-public class district {
-    String district;
-    BigDecimal district_m2;
+public class District {
+    String name;
+    BigDecimal pricePerM2;
 }
