@@ -1,4 +1,4 @@
-package br.com.desafio.teste.g8.desafioteste.desafioteste.service;
+package br.com.desafio.teste.g8.desafioteste.desafioteste.test.unit;
 
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Property;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Room;
@@ -12,8 +12,14 @@ import java.util.Map;
 
 @Service
 public class PropertyService {
-    @Autowired
+
     private PropertyRepository propertyRepository;
+
+    @Autowired
+    public PropertyService(PropertyRepository repository) {
+        this.propertyRepository = repository;
+    }
+
     /**
      * @author Vinicius Feitoza
      * @description Método que determina a área de cada comodo.
