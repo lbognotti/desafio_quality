@@ -1,12 +1,14 @@
 package br.com.desafio.teste.g8.desafioteste.desafioteste.repository;
 
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Property;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class PropertyRepository implements IRepository<Property> {
     private Map<String, Property> propertiesMap = new HashMap<>();
 
