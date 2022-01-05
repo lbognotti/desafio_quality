@@ -3,15 +3,12 @@ package br.com.desafio.teste.g8.desafioteste.desafioteste.test.unit;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Property;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Room;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.repository.PropertyRepository;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.internal.matchers.Any;
 
-import org.mockito.Matchers;
-
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.MockitoAnnotations.*;
 
 import java.util.ArrayList;
@@ -42,23 +39,15 @@ public class PropertyServiceTest {
     public void init() {
         openMocks(this);
         this.fakeProperty = this.createFakeProperty();
-
-//        this.propertyRepositoryMock = Mockito.mock(PropertyRepository.class);
         this.propertyService = new PropertyService(this.propertyRepositoryMock);
 
-        Mockito.when(this.propertyRepositoryMock.findByName(Matchers.any()))
+        Mockito.when(this.propertyRepositoryMock.findByName(fakeProperty.getName()))
                 .thenReturn(fakeProperty);
     }
 
     @Test
     public void deveRetornarAAreaTotalDaPropriedade() {
-        // Arrange
-
-
-        // Act
         double totalArea = this.propertyService.getPropertyArea(this.fakeProperty.getName());
-
-        // Assertion
-        Assertions.assertEquals(totalArea, 75.0);
+        assertEquals(totalArea, 75.0);
     }
 }

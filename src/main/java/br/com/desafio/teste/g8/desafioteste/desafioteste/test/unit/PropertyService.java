@@ -58,7 +58,7 @@ public class PropertyService {
      */
     public double getPropertyArea(String name) {
         Property p = this.propertyRepository.findByName(name);
-        HashMap<String, Double> roomArea = this.getRoomArea(p.toString());
+        HashMap<String, Double> roomArea = this.getRoomArea(p.getName());
         double propertyArea = roomArea.values().stream().reduce((a, b) -> a + b).get();
         return propertyArea ;
     }
