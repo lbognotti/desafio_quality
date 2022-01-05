@@ -33,11 +33,15 @@ public class PropertyService {
     /**
      * @author Ronaldd Pinho
      * @description Retorna o maior quarto de uma propriedade.
-     * @param property Objeto da propiedade com a lista de quartos.
+     * @param name serve para buscar a propriedade
      * @return Objeto de Room.
      */
-    public Room getBiggestRoom(Property property) {
-        return property.getQuartoList().stream().max(Comparator.comparing(Room::area)).get();
+    public Room getBiggestRoom(String name) {
+        return this.propertyRepository.findByName(name)
+                .getQuartoList()
+                .stream()
+                .max(Comparator.comparing(Room::area))
+                .get();
     }
   
     /**
