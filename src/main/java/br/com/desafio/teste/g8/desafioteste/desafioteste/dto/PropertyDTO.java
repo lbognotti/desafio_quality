@@ -27,7 +27,6 @@ public class PropertyDTO {
     private String district;
     private List<Room> quartoList;
 
-
     public static PropertyDTO toPropDto (Property property) {
         return PropertyDTO.builder()
                 .name(property.getName())
