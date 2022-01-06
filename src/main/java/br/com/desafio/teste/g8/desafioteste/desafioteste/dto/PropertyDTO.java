@@ -8,6 +8,10 @@ import lombok.Data;
 import javax.validation.constraints.*;
 import java.util.List;
 
+/**
+ * @author Vinicius Feitoza
+ * @description Classe PropertyDTO, realiza as validações de entradas de property.
+ */
 @Data
 @Builder
 public class PropertyDTO {

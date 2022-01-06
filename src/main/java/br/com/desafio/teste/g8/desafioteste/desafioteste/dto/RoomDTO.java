@@ -6,6 +6,10 @@ import lombok.Data;
 
 import javax.validation.constraints.*;
 
+/**
+ * @author Vinicius Feitoza
+ * @description Classe RoomDTO, realiza as validações de entradas de room.
+ */
 @Data
 @Builder
 public class RoomDTO {
