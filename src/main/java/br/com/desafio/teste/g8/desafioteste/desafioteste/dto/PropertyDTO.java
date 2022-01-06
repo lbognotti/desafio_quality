@@ -22,7 +22,7 @@ public class PropertyDTO {
      */
     @NotNull
     @NotEmpty(message = "O nome da propriedade não pode estar vazio.")
-    @Pattern(regexp = "^([A-Z]{1})([a-z]{1,})$", message = "O nome da propriedade deve começar com letra maiúscula") //quando o nome for composto, o que fazer?
+    @Pattern(regexp = "^([A-Z]{1})([a-zA-Z]{1,})$", message = "O nome da propriedade deve começar com letra maiúscula") //quando o nome for composto, o que fazer?
     @Size(max = 30, message = "O comprimento do nome não pode exceder 30 caracteres")
     private String name;
     @NotNull

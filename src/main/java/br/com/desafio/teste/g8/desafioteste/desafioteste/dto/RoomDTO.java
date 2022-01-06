@@ -20,7 +20,7 @@ public class RoomDTO {
      */
     @NotNull
     @NotEmpty(message = "O campo não pode estar vazio.")
-    @Pattern(regexp = "^([A-Z]{1})([a-z]{1,})$", message = "O nome do cômodo deve começar com letra maiúscula") //quando o nome for composto, o que fazer?
+    @Pattern(regexp = "^([A-Z]{1})([a-zA-Z]{1,})$", message = "O nome do cômodo deve começar com letra maiúscula") //quando o nome for composto, o que fazer?
     @Size(max=30, message = "O comprimento do cômodo não pode exceder 30 caracteres")
     private String name;
 
