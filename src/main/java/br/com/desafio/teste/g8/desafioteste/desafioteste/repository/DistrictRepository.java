@@ -1,13 +1,14 @@
 package br.com.desafio.teste.g8.desafioteste.desafioteste.repository;
 
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.District;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
+@Component
 public class DistrictRepository implements IRepository<District>{
 
     private  Map<String, District> districtMap = new HashMap<>();
