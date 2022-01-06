@@ -49,7 +49,7 @@ public class DistrictDTO {
     public DistrictDTO toDistrictDTO (District district){
         return DistrictDTO.builder().
                 name(district.getName()).pricePerM2(district.getPricePerM2()).
-                build());
+                build();
     }
 
     /**
