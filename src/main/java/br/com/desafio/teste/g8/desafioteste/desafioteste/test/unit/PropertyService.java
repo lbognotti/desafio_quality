@@ -1,25 +1,27 @@
 package br.com.desafio.teste.g8.desafioteste.desafioteste.test.unit;
 
+import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.District;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Property;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Room;
+import br.com.desafio.teste.g8.desafioteste.desafioteste.repository.DistrictRepository;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.repository.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.math.BigDecimal;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class PropertyService {
 
     private PropertyRepository propertyRepository;
+    private DistrictRepository districtRepository;
 
     @Autowired
-    public PropertyService(PropertyRepository repository) {
-        this.propertyRepository = repository;
+    public PropertyService(PropertyRepository propertyRepository, DistrictRepository districtRepository) {
+        this.propertyRepository = propertyRepository;
+        this.districtRepository = districtRepository;
     }
 
     public Property createProperty(Property property) {
@@ -75,5 +77,22 @@ public class PropertyService {
         HashMap<String, Double> roomArea = this.getRoomArea(p.getName());
         double propertyArea = roomArea.values().stream().reduce((a, b) -> a + b).get();
         return propertyArea ;
+    }
+
+    /**
+     * @author Lucas Matos
+     * @description Método para calcular a total do imóvel com base no valor do bairro.
+     * @param name
+     * @return Retorna o valor total da propriedade
+     */
+    public BigDecimal getTotalValueProperty(String name) {
+        Property property = this.propertyRepository.findByName(name);
+        if (property == null ) throw new NullPointerException("");
+        District district = this.districtRepository.findByName(property.getDistrict());
+        if (district == null) throw new NullPointerException("");
+
+        double area = property.getQuartoList().stream().map(Room::area).reduce(Double::sum).get();
+
+        return district.getPricePerM2().multiply(new BigDecimal(area));
     }
 }
