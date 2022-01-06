@@ -8,6 +8,10 @@ import lombok.Data;
 import javax.validation.constraints.*;
 import java.util.List;
 
+/**
+ * @author Vinicius Feitoza
+ * @description Classe PropertyDTO, realiza as validações de entradas de property.
+ */
 @Data
 @Builder
 public class PropertyDTO {
@@ -26,7 +30,6 @@ public class PropertyDTO {
     @Size(max = 45, message = "O comprimento do bairro não pode exceder 45 caracteres.")
     private String district;
     private List<Room> quartoList;
-
 
     public static PropertyDTO toPropDto (Property property) {
         return PropertyDTO.builder()
