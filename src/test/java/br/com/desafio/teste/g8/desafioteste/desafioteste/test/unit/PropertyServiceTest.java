@@ -50,4 +50,58 @@ public class PropertyServiceTest {
         double totalArea = this.propertyService.getPropertyArea(this.fakeProperty.getName());
         assertEquals(totalArea, 75.0);
     }
+
+    /**
+     * @author Lucas Matos
+     * @descripton Teste para validar se os valores da propriedade sao 0
+     */
+    @Test
+    public void naoDeveCadastrarUmComodoComValoresDeAreasIgual0() {
+        List<Room> rooms = new ArrayList<>();
+        rooms.add(Room.builder().name("sala").length(0.0).width(2.2).build());
+        rooms.add(Room.builder().name("quarto 1").length(2.0).width(4.0).build());
+        rooms.add(Room.builder().name("cozinha").length(3.0).width(5.0).build());
+
+        Property property = Property.builder()
+                .name("AP")
+                .district("Centro")
+                .quartoList(rooms)
+                .build();
+
+
+        Mockito.when(this.propertyRepositoryMock.save(property))
+                .thenReturn(property);
+
+       NullPointerException nullExp = assertThrows(NullPointerException.class, () -> this.propertyService.createProperty(property));
+
+       assertTrue(nullExp.getMessage().contains(""));
+
+    }
+
+    /**
+     * @author Lucas Matos
+     * @descripton Teste para validar se os valores da propriedade sao negativos
+     */
+    @Test
+    public void naoDeveCadastrarUmComodoComValoresDeAreasNegativos() {
+        List<Room> rooms = new ArrayList<>();
+        rooms.add(Room.builder().name("sala").length(2.0).width(2.2).build());
+        rooms.add(Room.builder().name("quarto 1").length(2.0).width(4.0).build());
+        rooms.add(Room.builder().name("cozinha").length(3.0).width(-5.0).build());
+
+        Property property = Property.builder()
+                .name("AP")
+                .district("Centro")
+                .quartoList(rooms)
+                .build();
+
+
+        Mockito.when(this.propertyRepositoryMock.save(property))
+                .thenReturn(property);
+
+        NullPointerException nullExp = assertThrows(NullPointerException.class, () -> this.propertyService.createProperty(property));
+
+        assertTrue(nullExp.getMessage().contains(""));
+
+    }
 }

@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class PropertyService {
@@ -18,6 +20,18 @@ public class PropertyService {
     @Autowired
     public PropertyService(PropertyRepository repository) {
         this.propertyRepository = repository;
+    }
+
+    public Property createProperty(Property property) {
+       List<Room> propertyFailure = property.getQuartoList().stream()
+                .filter(p -> p.getWidth() <= (0.0) || p.getLength() <= (0.0))
+                .collect(Collectors.toList());
+
+       if (propertyFailure.size() != 0) {
+           throw new NullPointerException("");
+       }
+
+        return this.propertyRepository.save(property);
     }
 
     /**
