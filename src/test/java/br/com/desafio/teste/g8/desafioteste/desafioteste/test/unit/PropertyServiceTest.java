@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.MockitoAnnotations.*;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,14 +41,27 @@ public class PropertyServiceTest {
         openMocks(this);
         this.fakeProperty = this.createFakeProperty();
         this.propertyService = new PropertyService(this.propertyRepositoryMock);
-
-        Mockito.when(this.propertyRepositoryMock.findByName(fakeProperty.getName()))
-                .thenReturn(fakeProperty);
     }
 
     @Test
     public void deveRetornarAAreaTotalDaPropriedade() {
+        Mockito.when(this.propertyRepositoryMock.findByName(anyString()))
+                .thenReturn(fakeProperty);
+
         double totalArea = this.propertyService.getPropertyArea(this.fakeProperty.getName());
         assertEquals(totalArea, 75.0);
+    }
+
+    @Test
+    public void deveRetornarOMaiorComodoDaPropriedade() {
+        Property mockedProperty = this.createFakeProperty();
+        Room mockedBiggestRoom = mockedProperty.getQuartoList().get(0);
+
+        when(this.propertyRepositoryMock.findByName(anyString()))
+                .thenReturn(mockedProperty);
+
+        Room result = this.propertyService.getBiggestRoom(mockedProperty.getName());
+
+        assertEquals(result, mockedBiggestRoom);
     }
 }
