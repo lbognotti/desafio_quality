@@ -14,13 +14,13 @@ import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class PropertyServiceTest {
 
-    private PropertyService propertyService;
-
     @Mock
     private PropertyRepository propertyRepositoryMock;
+    private PropertyService propertyService;
     private Property fakeProperty;
 
     public Property createFakeProperty() {
@@ -104,7 +104,11 @@ public class PropertyServiceTest {
 
         assertTrue(nullExp.getMessage().contains(""));
     }
-  
+
+    /**
+     * @author Ronaldd Pinho
+     * @description Testa se retorna o maior cômodo dada uma propriedade.
+     */
     @Test
     public void deveRetornarOMaiorComodoDaPropriedade() {
         Property mockedProperty = this.createFakeProperty();
@@ -116,5 +120,41 @@ public class PropertyServiceTest {
         Room result = this.propertyService.getBiggestRoom(mockedProperty.getName());
 
         assertEquals(result, mockedBiggestRoom);
+    }
+
+    /**
+     * @author Ronaldd Pinho
+     * @description Testa se de fato o total de metros quadrados por cômodo está correto.
+     */
+    @Test
+    public void deveRetornarAsAreasDeCadaComodoDeUmaPropriedade() {
+        fakeProperty = createFakeProperty();
+        when(this.propertyRepositoryMock.findByName(anyString()))
+                .thenReturn(fakeProperty);
+
+        Map<String, Double> areas = this.propertyService.getRoomArea(fakeProperty.getName());
+
+        assertTrue(areas.get("sala") == 50.0 &&
+                areas.get("quarto 1") == 16.0 &&
+                areas.get("cozinha") == 9.0);
+    }
+
+    /**
+     * @author Ronaldd Pinho
+     * @description Testa se o método getRoomArea do serviço lança um NullPointerException com mensagem nula quando
+     * o método findByName do repository retornar null por nõ encontrar o registro no repositório.
+     */
+    @Test
+    public void deveLancarExcecaoQuandoOFindByNameRetornaNullNoGetRoomArea() {
+        fakeProperty = this.createFakeProperty();
+        when(this.propertyRepositoryMock.findByName(anyString()))
+                .thenReturn(null);
+
+        NullPointerException exc = assertThrows(
+                NullPointerException.class,
+                () -> this.propertyService.getRoomArea(anyString()));
+
+        assertEquals(null, exc.getMessage());
+//        assertNull(exc.getMessage());
     }
 }
