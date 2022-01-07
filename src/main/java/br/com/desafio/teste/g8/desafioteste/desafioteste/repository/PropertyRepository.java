@@ -8,6 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+/**
+ * @author Lucas matos
+ * @description classe PropertyRepository guarda os dados (semelhante a um banco de dados) e possui metodos para manipulacao de dados
+ */
 @Component
 public class PropertyRepository implements IRepository<Property> {
     private Map<String, Property> propertiesMap = new HashMap<>();

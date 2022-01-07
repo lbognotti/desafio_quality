@@ -12,18 +12,32 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * @author Lucas Matos
+ * @description Regras de negocio a serem aplicadas. base da resolucao das historias de usuario. Fica a logica base do negocio, que chama varios metodos.
+ */
 @Service
 public class PropertyService {
 
+    /**
+     * @author Vinicius Feitoza
+     * @description instancia classes para serem usadas e ligar com o repositorio
+     */
     private PropertyRepository propertyRepository;
     private DistrictRepository districtRepository;
-
+    
     @Autowired
     public PropertyService(PropertyRepository propertyRepository, DistrictRepository districtRepository) {
         this.propertyRepository = propertyRepository;
         this.districtRepository = districtRepository;
     }
 
+    /**
+     * @author Lucas Matos
+     * @description cadastra uma propriedade propertyRepository a partir de uma property dada como parametro
+     * @param property parametro recebido a ser cadastrado
+     * @return a propriedade criada
+     */
     public Property createProperty(Property property) {
        List<Room> propertyFailure = property.getQuartoList().stream()
                 .filter(p -> p.getWidth() <= (0.0) || p.getLength() <= (0.0))
