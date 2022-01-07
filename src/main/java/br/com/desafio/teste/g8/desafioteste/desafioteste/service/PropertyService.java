@@ -1,4 +1,4 @@
-package br.com.desafio.teste.g8.desafioteste.desafioteste.test.unit;
+package br.com.desafio.teste.g8.desafioteste.desafioteste.service;
 
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.District;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Property;

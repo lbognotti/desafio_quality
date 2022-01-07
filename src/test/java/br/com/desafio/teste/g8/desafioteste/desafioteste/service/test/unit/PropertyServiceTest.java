@@ -1,10 +1,11 @@
-package br.com.desafio.teste.g8.desafioteste.desafioteste.test.unit;
+package br.com.desafio.teste.g8.desafioteste.desafioteste.service.test.unit;
 
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.District;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Property;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Room;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.repository.DistrictRepository;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.repository.PropertyRepository;
+import br.com.desafio.teste.g8.desafioteste.desafioteste.service.PropertyService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
