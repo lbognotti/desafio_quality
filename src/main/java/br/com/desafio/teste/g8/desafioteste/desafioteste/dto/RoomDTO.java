@@ -3,6 +3,7 @@ package br.com.desafio.teste.g8.desafioteste.desafioteste.dto;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Room;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.validation.constraints.*;
 
@@ -20,19 +21,17 @@ public class RoomDTO {
      */
     @NotNull
     @NotEmpty(message = "O campo não pode estar vazio.")
-    @Pattern(regexp = "^([A-Z]{1})([a-zA-Z]{1,})$", message = "O nome do cômodo deve começar com letra maiúscula") //quando o nome for composto, o que fazer?
+    @Pattern(regexp = "^([A-Z]{1})([\\sa-zA-Z]{1,})$", message = "O nome do cômodo deve começar com letra maiúscula") //quando o nome for composto, o que fazer?
     @Size(max=30, message = "O comprimento do cômodo não pode exceder 30 caracteres")
     private String name;
 
     @NotNull
-    @NotEmpty(message = "O campo não pode estar vazio.")
-    @Min(value = 0, message = "A largura mínima permitida por cômodo é de 0 metros.")
+    @Min(value = 1, message = "A largura mínima permitida por cômodo é de 1 metro.")
     @Max(value = 25, message = "A largura máxima permitida por cômodo é de 25 metros.")
     private Double width;
 
     @NotNull
-    @NotEmpty(message = "O campo não pode estar vazio.")
-    @Min(value = 0, message = "O comprimento mínimo permitido por cômodo é de 0 metros.")
+    @Min(value = 1, message = "O comprimento mínimo permitido por cômodo é de 1 metro.")
     @Max(value = 33, message = "O comprimento máximo permitido por cômodo é de 33 metros")
     private Double length;
 

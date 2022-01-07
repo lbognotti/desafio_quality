@@ -1,11 +1,13 @@
 package br.com.desafio.teste.g8.desafioteste.desafioteste.controller;
 
+import br.com.desafio.teste.g8.desafioteste.desafioteste.dto.PropertyDTO;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Property;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.test.unit.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Map;
@@ -21,10 +23,12 @@ public class AppController {
     }
 
     @PostMapping("/properties")
-    public ResponseEntity registerProperty(@RequestBody Property property) throws URISyntaxException {
+    public ResponseEntity<PropertyDTO> registerProperty(@Valid @RequestBody PropertyDTO propertyDto) throws URISyntaxException {
+        Property propertyCreated = this.propertyService.createProperty(PropertyDTO.toProperty(propertyDto));
+        PropertyDTO responseDto = PropertyDTO.toPropDto(propertyCreated);
         return ResponseEntity
                 .created(new URI("/properties"))
-                .body(this.propertyService.createProperty(property));
+                .body(responseDto);
     }
 
     @GetMapping("/area/{roomName}")
