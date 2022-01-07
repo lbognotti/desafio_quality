@@ -2,7 +2,7 @@ package br.com.desafio.teste.g8.desafioteste.desafioteste.controller;
 
 import br.com.desafio.teste.g8.desafioteste.desafioteste.dto.PropertyDTO;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Property;
-import br.com.desafio.teste.g8.desafioteste.desafioteste.test.unit.PropertyService;
+import br.com.desafio.teste.g8.desafioteste.desafioteste.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
