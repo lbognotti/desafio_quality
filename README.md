@@ -1,3 +1,5 @@
+# Desafio Testing - Grupo 8
+
 # Sobre o Projeto
 
 O objetivo deste projeto é aplicar os conteúdos dados até o momento durante o
@@ -26,20 +28,20 @@ git clone https://github.com/lbognotti/desafio_quality
 
 # Executando Testes
 
-<strong> Nesta primeira imagem é sinalizado como executar um teste de forma completa,
+<strong> Nesta primeira imagem é sinalizado como executar um teste de forma completa (neste caso clicando no ícone (verde) na linha 22),
 passando por todos os outros testes existentes dentro da PropertyServiceTest</strong>
 
-<img src=˜images/img_runtest_03.png>
+<img src="images/img_runtest_03.png">
 
-<strong> Nesta segunda imagem é sinalizado onde executar o teste de forma individual, ou seja,
+<strong> Nesta segunda imagem é sinalizado onde executar o teste de forma individual (linha 125), ou seja,
 executando somente este teste dentro da PropertyServiceTest</strong>
 
-<img src=˜images/img_runtest_01.png>
+<img src="images/img_runtest_01.png">
 
-<strong> Nesta terceira imagem é sinalizado onde executar o teste de forma individual e as várias formas de executar e logo abaixo exibindo
+<strong> Nesta terceira imagem é sinalizado onde executar o teste de forma individual (linha 125) e as várias formas de executar e logo abaixo exibindo
 o resultado do teste dentro da PropertyServiceTest</strong>
 
-<img src=˜images/img_runtest_02.png>
+<img src="images/img_runtest_02.png">
 
 # Testes Unitários e Validações de Entradas
 
