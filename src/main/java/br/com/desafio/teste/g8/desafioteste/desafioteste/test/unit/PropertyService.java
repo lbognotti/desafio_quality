@@ -13,17 +13,18 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * @author
- * @description
- * @param
- * @return
+ * @author Lucas Matos
+ * @description Regras de negocio a serem aplicadas. base da resolucao das historias de usuario. Fica a logica base do negocio, que chama varios metodos.
  */
 @Service
 public class PropertyService {
 
+    /**
+     * @author Vinicius Feitoza
+     * @description instancia classes para serem usadas e ligar com o repositorio
+     */
     private PropertyRepository propertyRepository;
     private DistrictRepository districtRepository;
-
     @Autowired
     public PropertyService(PropertyRepository propertyRepository, DistrictRepository districtRepository) {
         this.propertyRepository = propertyRepository;
