@@ -1,4 +1,4 @@
-package br.com.desafio.teste.g8.desafioteste.desafioteste.test.unit;
+package br.com.desafio.teste.g8.desafioteste.desafioteste.service;
 
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.District;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Property;
@@ -44,7 +44,7 @@ public class PropertyService {
                 .collect(Collectors.toList());
 
        if (propertyFailure.size() != 0) {
-           throw new NullPointerException("");
+           throw new NullPointerException();
        }
 
         return this.propertyRepository.save(property);
@@ -101,9 +101,9 @@ public class PropertyService {
      */
     public BigDecimal getTotalValueProperty(String name) {
         Property property = this.propertyRepository.findByName(name);
-        if (property == null ) throw new NullPointerException("");
+        if (property == null ) throw new NullPointerException();
         District district = this.districtRepository.findByName(property.getDistrict());
-        if (district == null) throw new NullPointerException("");
+        if (district == null) throw new NullPointerException();
 
         double area = property.getQuartoList().stream().map(Room::area).reduce(Double::sum).get();
 
