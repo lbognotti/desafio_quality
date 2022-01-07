@@ -1,4 +1,4 @@
-package br.com.desafio.teste.g8.desafioteste.desafioteste.service.test.unit;
+package br.com.desafio.teste.g8.desafioteste.desafioteste.service;
 
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.District;
 import br.com.desafio.teste.g8.desafioteste.desafioteste.entity.Property;
@@ -91,7 +91,7 @@ public class PropertyServiceTest {
 
        NullPointerException nullExp = assertThrows(NullPointerException.class, () -> this.propertyService.createProperty(property));
 
-       assertTrue(nullExp.getMessage().contains(""));
+       assertNull(nullExp.getMessage());
 
     }
 
@@ -118,8 +118,7 @@ public class PropertyServiceTest {
 
         NullPointerException nullExp = assertThrows(NullPointerException.class, () -> this.propertyService.createProperty(property));
 
-        nullExp.getMessage();
-        assertTrue(true);
+        assertNull(nullExp.getMessage());
     }
 
     /**
@@ -153,6 +152,25 @@ public class PropertyServiceTest {
     }
 
     /**
+     * @author Ronaldd Pinho
+     * @description Testa se o método getBiggestRoom lança uma exceção quando o findByName não
+     * encontra a property e retorna null.
+     */
+    @Test
+    public void deveLancarNullPointerExcCasoOFindByNameFalheNoBiggestRoom() {
+        Property mockedProperty = this.createFakeProperty();
+
+        when(this.propertyRepositoryMock.findByName(anyString()))
+                .thenReturn(null);
+
+        NullPointerException exception = assertThrows(
+                NullPointerException.class,
+                () -> this.propertyService.getBiggestRoom(anyString()));
+
+        assertNull(exception.getMessage());
+    }
+
+    /**
      * @author Lucas Matos
      * @descripton Teste retorna uma excessao ao buscar uma propridade que nao esta cadastrada
      */
@@ -183,8 +201,7 @@ public class PropertyServiceTest {
 
         NullPointerException nullExpDistrict = assertThrows(NullPointerException.class, () -> this.propertyService.getTotalValueProperty(property.getName()));
 
-        nullExpDistrict.getMessage();
-        assertTrue(true);
+        assertNull(nullExpDistrict.getMessage());
    }
 
     /**
@@ -236,6 +253,6 @@ public class PropertyServiceTest {
                 NullPointerException.class,
                 () -> this.propertyService.getRoomArea(anyString()));
 
-        assertEquals(null, exc.getMessage());
+        assertNull(exc.getMessage());
     }
 }
