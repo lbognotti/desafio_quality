@@ -5,6 +5,10 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+/**
+ * @author Wolsen
+ * @description classe District, guarda os bairror. contem name (nome do bairro) e pricePerM2 (preco por metro quadrado). Data e Build tras
+ */
 @Data
 @Builder
 public class District {

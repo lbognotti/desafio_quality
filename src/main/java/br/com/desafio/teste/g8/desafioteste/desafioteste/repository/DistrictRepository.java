@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * @author Wolsen
- * @description Classe para repositório (guardar) de Districts (bairros)
+ * @description Classe para repositório (deixa guardado) de Districts (bairros)
  */
 @Component
 public class DistrictRepository implements IRepository<District>{

@@ -12,6 +12,12 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * @author
+ * @description
+ * @param
+ * @return
+ */
 @Service
 public class PropertyService {
 
@@ -24,6 +30,12 @@ public class PropertyService {
         this.districtRepository = districtRepository;
     }
 
+    /**
+     * @author Lucas Matos
+     * @description cadastra uma propriedade propertyRepository a partir de uma property dada como parametro
+     * @param property parametro recebido a ser cadastrado
+     * @return a propriedade criada
+     */
     public Property createProperty(Property property) {
        List<Room> propertyFailure = property.getQuartoList().stream()
                 .filter(p -> p.getWidth() <= (0.0) || p.getLength() <= (0.0))
