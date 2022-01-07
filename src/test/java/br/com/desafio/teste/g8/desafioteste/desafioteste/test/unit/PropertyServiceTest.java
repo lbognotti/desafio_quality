@@ -54,6 +54,10 @@ public class PropertyServiceTest {
         this.propertyService = new PropertyService(this.propertyRepositoryMock, this.districtRepositoryMock);
     }
 
+    /**
+     * @author Lucas Matos
+     * @description Teste para validar se retorna a area total da propriedade
+     */
     @Test
     public void deveRetornarAAreaTotalDaPropriedade() {
         Mockito.when(this.propertyRepositoryMock.findByName(anyString()))
