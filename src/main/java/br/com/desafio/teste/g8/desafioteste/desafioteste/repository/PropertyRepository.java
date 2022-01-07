@@ -20,7 +20,8 @@ public class PropertyRepository implements IRepository<Property> {
      */
     @Override
     public Property save(Property entity) {
-        return this.propertiesMap.put(entity.getName(), entity);
+        this.propertiesMap.put(entity.getName(), entity);
+        return this.propertiesMap.get(entity.getName());
     }
 
     /**
