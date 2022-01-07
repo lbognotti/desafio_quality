@@ -25,6 +25,7 @@ public class PropertyService {
      */
     private PropertyRepository propertyRepository;
     private DistrictRepository districtRepository;
+    
     @Autowired
     public PropertyService(PropertyRepository propertyRepository, DistrictRepository districtRepository) {
         this.propertyRepository = propertyRepository;
