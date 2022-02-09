@@ -2,10 +2,7 @@
 
 # Sobre o Projeto
 
-O objetivo deste projeto é aplicar os conteúdos dados até o momento durante o
-Programa de aceleração MeLi (Git, Java e Spring), com ênfase principal nas validações e
-tipos de teste que podem ser usados a partir de uma proposta, um especificação de
-requisitos e documentação anexa.
+O objetivo deste projeto final é implementar uma API REST com o desafio de acondicionar mercadorias que os Vendedores como supermercados, empresas do setor alimentício, atacadistas, etc, afim de acondicioná-los em locais corretos de acordo com as exigências para cada tipo diferente de produtos, neste caso, produtos que necessitam serem armazenado em zonas frigoríficas diferentes e diante disto aplicar os conteúdos trabalhados durante o BOOTCAMP MELI.
 
 # Ferramentas Utilizadas
 
@@ -14,88 +11,13 @@ requisitos e documentação anexa.
 - Maven
 - Lombok
 - Mockito
+- Docker
 
 # Instalação
 
-Segue abaixo as instruções para instalação do nosso projeto.
-
-1 - Clone o nosso repositório
-
-```sh
-git clone https://github.com/lbognotti/desafio_quality
-```
-2 - Abre com a sua IDE de preferência
-
 # Executando Testes
 
-<strong> Nesta primeira imagem é sinalizado como executar um teste de forma completa (neste caso clicando no ícone (verde) na linha 22),
-passando por todos os outros testes existentes dentro da PropertyServiceTest</strong>
-
-<img src="images/img_runtest_03.png">
-
-<strong> Nesta segunda imagem é sinalizado onde executar o teste de forma individual (linha 125), ou seja,
-executando somente este teste dentro da PropertyServiceTest</strong>
-
-<img src="images/img_runtest_01.png">
-
-<strong> Nesta terceira imagem é sinalizado onde executar o teste de forma individual (linha 125) e as várias formas de executar e logo abaixo exibindo
-o resultado do teste dentro da PropertyServiceTest</strong>
-
-<img src="images/img_runtest_02.png">
-
 # Testes Unitários e Validações de Entradas
-
-- Teste para retornar a area total de uma propriedade
-```sh
-@Test
-deveRetornarAAreaTotalDaPropriedade
-```
-- Teste para validar se os valores da propriedade sao 0
-```sh
-@Test
-naoDeveCadastrarUmComodoComValoresDeAreasIgual0
-```
-- Teste para validar se os valores da propriedade sao negativos
-```sh
-@Test
-naoDeveCadastrarUmComodoComValoresDeAreasNegativos
-```
-- Teste para validar o cadastro de uma nova propriedade
-```sh
-@Test
-deveCadastrarUmComodoComValoresInteiroPositivo
-```
-- Testa se retorna o maior cômodo dada uma propriedade
-```sh
-@Test
-deveRetornarOMaiorComodoDaPropriedade
-```
-- Teste retorna uma excessao ao buscar uma propridade que nao esta cadastrada
-```sh
-@Test
-deveRetornarUmaExceptionQuandoNaoEncontrarUmaProperty
-```
-- Teste retorna uma excessao ao buscar um bairro que nao esta cadastrado
-```sh
-@Test
-deveRetornarUmaExceptionQuandoNaoEncontrarUmDistrict
-```
-- Teste para validar o total da propridade
-```sh
-@Test
-deveRetornarOvalorTotalDaPropriedade
-```
-- Testa se de fato o total de metros quadrados por cômodo está correto.
-```sh
-@Test
-deveRetornarAsAreasDeCadaComodoDeUmaPropriedade
-```
-- Testa se o método getRoomArea do serviço lança um NullPointerException com mensagem nula quando
-o método findByName do repository retornar null por nõ encontrar o registro no repositório
-```sh
-@Test
-deveLancarExcecaoQuandoOFindByNameRetornaNullNoGetRoomArea
-```
 
 # Autores
 
